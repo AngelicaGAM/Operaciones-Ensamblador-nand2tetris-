@@ -1,0 +1,9 @@
+@R5
+D=M
+(LOOP)
+@R5
+D=D+M
+@R6
+M=D
+@LOOP
+0;JMP

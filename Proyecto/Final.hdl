@@ -1,0 +1,25 @@
+// CHIP Final
+
+CHIP Final {
+	
+	IN a[8], b[8], c[8], d[8], cin,
+        BusControl[12];
+
+		/*zx, // Zero the x input
+        nx, // Negate the x input
+        zy, // Zero the y input
+        ny, // Negate the y input
+        f,  // Function code: 1 for add, 0 for and
+        no, // Negate the out output 
+        x1, x2, y1, y2, d1, d2;*/
+
+	 OUT A[8], B[8], C[8], D[8], zr, ng, cout;
+
+		PARTS:
+
+		Mux4Way8(a=a, b=b, c=c, d=d, sel=BusControl[10..11], out=outx);
+		Mux4Way8(a=a, b=b, c=c, d=d, sel=BusControl[8..9], out=outy);
+		ALU8(x=outx, y=outy, cin=cin, BusALU=BusControl[2..7], zr=zr, ng=ng, out=out, cout=cout);  
+		DMux4Way8(in=out, sel=BusControl[0..1], a=A, b=B, c=C, d=D);   
+
+}

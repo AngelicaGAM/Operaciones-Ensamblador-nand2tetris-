@@ -1,0 +1,31 @@
+//Chip Or4
+
+/**
+ *Or gate: out = 1 if {a == 1 or b == 1}, 0 otherwise 
+ * 4-bit bitwise Or:
+ * for i = 0..3 out[i] = (a[i] or b[i])
+ */
+
+CHIP Or4 {
+    IN a[4], b[4];
+    OUT out[4];
+
+    PARTS:
+    // Put your code here:
+    Not(in=a[0], out=outa0);
+    Not(in=b[0], out=outb0);
+    Nand(a=outa0, b=outb0, out=out[0]);
+   
+    Not(in=a[1], out=outa1);
+    Not(in=b[1], out=outb1);
+    Nand(a=outa1, b=outb1, out=out[1]);
+
+    Not(in=a[2], out=outa2);
+    Not(in=b[2], out=outb2);
+    Nand(a=outa2, b=outb2, out=out[2]);
+
+    Not(in=a[3], out=outa3);
+    Not(in=b[3], out=outb3);
+    Nand(a=outa3, b=outb3, out=out[3]);
+
+}
